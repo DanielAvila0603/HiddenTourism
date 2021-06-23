@@ -7,6 +7,7 @@ package ec.espe.edu.controller;
 
 import ec.espe.edu.model.Tourguide;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,13 +24,37 @@ public class TourguideController {
     
     public TourguideController(){
     }
+    public Connection getDBConnection(){
+        Connection conn = null;
+        Statement sqlStatement = null;
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hiddentourism" + "?user=root&password=12345");
+                sqlStatement = conn.createStatement();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Stack in the catch -> " + e.toString());
+                e.printStackTrace();
+            }
+            try {
+                if (sqlStatement != null) {
+                    sqlStatement.close();
+                }
+            } 
+            catch (SQLException e) {
+                
+                e.printStackTrace();
+            }
+           
+        return conn;
+    }
     
     public  List<Tourguide> readTourguide(){
         Connection conn = null;
         Statement statement = null;
         List<Tourguide> tourguideList = new ArrayList<>();
         
-        TourguideDataBaseConexion dbConnection = new TourguideDataBaseConexion();
+        TourguideController dbConnection = new TourguideController();
         try{
             conn = dbConnection.getDBConnection();
             statement = conn.createStatement();
@@ -42,7 +67,7 @@ public class TourguideController {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(TourguideDataBaseConexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TourguideController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return tourguideList;
