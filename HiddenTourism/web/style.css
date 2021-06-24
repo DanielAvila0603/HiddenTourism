@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/06/2021, 21:32:37
+    Author     : Daniel
+*/
+
+.title{
+    
+    color: darkslategray;
+    font-family: Book Antiqua;
+    text-align: center;
+    
+}
+
+body{
+    background-image: url("20-hidden-places.png");
+    font-family: Book Antiqua;
+}
+
+#container{
+    width: 1000px;
+    margin: 0px auto;
+}
+
+header{
+    background: rgba(166, 174, 207, 0.753);
+    margin: 0px auto;
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    line-height: 100px;
+}
+
+nav{
+    color: darkslategray;
+    background: rgba(166, 174, 207, 0.753);
+    text-align: center;
+    height: 100px;
+    width: 1000px;
+    font-family: Book Antiqua;
+    margin: 100px auto;
+    border-bottom: 1px solid black;
+}
+
+nav ul li{
+    float: left;
+    list-style: none;
+    margin-right: 150px; 
+    cursor: pointer;
+}
+
+.clearContent{
+    clear: both ;
+}
+
+#content{
+    float: left;
+    width: 80%;
+    margin-top: 10px;
+    background: rgb(224, 223, 223);
+    text-align: center;
+    border: 1px solid black;
+}
+
+aside{
+    float: left;
+    background: aliceblue;
+    width: 15%;
+    margin: 10px;
+    align-content: center;
+}   
+
+footer{
+    text-align: center;
+    background: red;
+    color: white;
+    font-weight: 200;
+    font-family: Book Antiqua;
+}
+
+input:valid,
+textarea:valid {
+    background: rgb(93, 219, 100);
+}
+
+input:invalid,
+textarea:invalid {
+    background: rgb(255, 255, 255);
+}
