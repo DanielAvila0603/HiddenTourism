@@ -114,3 +114,20 @@ footer a:hover {
   color: #777;
   text-decoration: none;
 }
+
+
+.articleTourist {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+.touristBody {
+    background-image: url("http://www.kofc.org/un/graphics/es/join/right-rail/sign-up.jpg");
+    background-color: transparent;
+}
