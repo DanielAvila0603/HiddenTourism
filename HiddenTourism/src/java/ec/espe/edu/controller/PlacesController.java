@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.places.controller;
+package ec.espe.edu.controller;
 
 import ec.edu.espe.places.model.Place;
 import java.sql.Connection;
