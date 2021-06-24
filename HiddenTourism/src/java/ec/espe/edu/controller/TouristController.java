@@ -1,25 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ec.espe.edu.controller;
 
 import ec.espe.edu.model.Restaurant;
+import ec.espe.edu.model.Tourist;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
- * @author WINDOWS-Sebastian
+ * @author SEBASTIAN
  */
-public class RestaurantController {
-    public void save(Restaurant restaurant){
+public class TouristController {
+    
+    /*public void save(Tourist tourist){
          System.out.println("saving from a class and output in the web server console -> " + restaurant.getRestaurantName());
-    }
+    }*/
     
     /*public Map<String, String> getHeadersInfo(HttpServletRequest request) {
 
@@ -35,8 +38,8 @@ public class RestaurantController {
         return map;
     }*/
     
-    public ArrayList<Restaurant> readDBRestaurant() throws ClassNotFoundException, SQLException{
-        ArrayList<Restaurant> arr;
+    public ArrayList<Tourist> readDBTourist() throws ClassNotFoundException, SQLException{
+        ArrayList<Tourist> arr;
         Connection connect = null;
         Statement s = null;
 
@@ -49,20 +52,21 @@ public class RestaurantController {
         );
 
         s = connect.createStatement();
-        String SQLQuery = "SELECT * FROM restaurant";
+        String SQLQuery = "SELECT * FROM tourist";
         ResultSet rs = s.executeQuery(SQLQuery);
 
         while(rs.next()){
-            arr.add(new Restaurant(
+            arr.add(new Tourist(
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
-                    rs.getString(7)));
+                    rs.getDate(5),
+                    rs.getString(6)
+                    ));
         }
 
         return arr;
     }
+    
 }

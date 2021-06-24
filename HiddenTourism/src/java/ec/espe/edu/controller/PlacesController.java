@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.places.controller;
+package ec.espe.edu.controller;
 
 import ec.edu.espe.places.model.Place;
 import java.sql.Connection;
@@ -25,8 +25,11 @@ public class PlacesController {
         Connection conn = null;
         
         try {
-            Class.forName("org.gjt.mm.mysql.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/tourism","root","");
+            Class.forName("org.mariadb.jdbc.Driver");
+        conn = DriverManager.getConnection(
+                "jdbc:mariadb://localhost/hiddentourism" + 
+                        "?user=root&password=12345"
+        );
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PlacesController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -28,8 +28,8 @@ public class TourguideController {
         Connection conn = null;
         Statement sqlStatement = null;
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hiddentourism" + "?user=root&password=12345");
+                Class.forName("org.mariadb.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourism" + "?user=root&password=12345");
                 sqlStatement = conn.createStatement();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
