@@ -15,32 +15,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
         <title>Restaurant Saving</title>
     </head>
-    <body>
-        <h1>RESTAURANT SAVING</h1>
-        Method --> 
-        <%
-            String method = request.getMethod();
-            out.println(method);
-        %>   
-        <hr>
-        <ul>
-            <li><p><b>Restaurant Name: </b><%=request.getParameter("restaurantName")%></p></li>
-            <li><p><b>Address: </b><%=request.getParameter("restaurantAddress")%></p></li>
-            <li><p><b>Description: </b><%=request.getParameter("restaurantDescription")%></p></li>
-            <li>
-                <p><b>Schedule: </b></p>
-                <p>Opening Time: <%=request.getParameter("openingTime")%></p>
-                <p>Closing Time: <%=request.getParameter("closingTime")%></p>
-            </li>
-            <li><p><b>Consumption Type: </b></p>
-                <p>To serve: <%=request.getParameter("toServeConsumption")%></p>
-                <p>To go: <%=request.getParameter("toGoConsumption")%></p>
-                <p>Contactless Delivery: <%=request.getParameter("contactlessDeliveryConsumption")%></p>
-            </li>
-        </ul>
-            
+    <body> 
         <%
         Connection connect = null;
         Statement s = null;
@@ -74,7 +52,7 @@
             
         try{
             Class.forName("org.mariadb.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdb" + "?user=root&password=56793640");
+            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
             
             s = connect.createStatement();
             
@@ -104,7 +82,6 @@
                     + ")";
             
             SQL = SQL.replaceAll("'", "\"");
-            out.println("<br><hr><p><b>PROCESSED SQL: </b>" + SQL + "</p>");
             s.executeQuery(SQL);
             
             }catch(Exception e){
@@ -123,6 +100,8 @@
                 e.printStackTrace();
             }
         %>
+        <h1>Ingresado con exito!</h1>
+        <button onclick="location.href='/index.html'">Regresar</button>
     </body>
 </html>
 

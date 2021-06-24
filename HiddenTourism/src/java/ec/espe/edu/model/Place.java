@@ -10,7 +10,6 @@ package ec.edu.espe.places.model;
  * @author Nayeli
  */
 public class Place {
-    
     String tourismName;
     String province;
     String canton;

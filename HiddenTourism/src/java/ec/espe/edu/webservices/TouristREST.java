@@ -34,20 +34,13 @@ public class TouristREST {
     /**
      * Retrieves representation of an instance of ec.espe.edu.webservices.TouristREST
      * @return an instance of java.lang.String
-     */
+     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getTourist() {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
-
-    /**
-     * PUT method for updating or creating an instance of TouristREST
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
-    }
+    * 
+    */
 }

@@ -15,25 +15,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tourguides List</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
+        <title>Tourguides Information</title>
     </head>
     <body>
-        <h1>Tourguides List!</h1>
         <%
             Connection connect = null;
             Statement sqlStatement = null;
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                connect = DriverManager.getConnection("jdbc:maria://localhost/hiddentourismdata" + "?user=root&password=12345");
+                connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
                 sqlStatement = connect.createStatement();
                 String sql = "SELECT * FROM tourguide";
                 ResultSet rec = sqlStatement.executeQuery(sql);
         %>
-        <table width="800" border="1">
+        <table width="600" border="1">
             <tr>
-                <th width="91"><div align="center">CI</div></th>
-                <th width="91"><div align="center">First Name</div></th>
-                <th width="91"><div align="center">Last Name</div></th>
+                <th><div align="center">CI</div></th>
+                <th><div align="center">First Name</div></th>
+                <th><div align="center">Last Name</div></th>
             </tr>
             <%while ((rec != null) && (rec.next())) {%>
             <tr>

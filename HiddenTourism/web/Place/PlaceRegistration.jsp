@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
         <title>Touristic Registration</title>
     </head>
     <body>

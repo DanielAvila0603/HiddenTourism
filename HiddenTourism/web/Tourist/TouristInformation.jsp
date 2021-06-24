@@ -15,7 +15,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Reading Patient JSP</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
+        <title>Tourist Information</title>
     </head>
     <body>
         <%
@@ -25,7 +26,7 @@
             try {
               Class.forName("org.mariadb.jdbc.Driver");
 
-                connect = DriverManager.getConnection("jdbc:maria://localhost/hiddentourismdata" + "?user=root&password=12345");
+                connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
 
                 sqlStatement = connect.createStatement();
                 String sql = "SELECT * FROM tourist";
@@ -34,12 +35,12 @@
         %>
         <table width="800" border="1">
             <tr>
-                <th width="91"><div align="center">ID Tourist</div></th>
-                <th width="91"><div align="center">First Name</div></th>
-                <th width="91"><div align="center">Last Name</div></th>
-                <th width="91"><div align="center">Location</div></th>
-                <th width="91"><div align="center">Reservation Date</div></th>
-                <th width="91"><div align="center">Payment Type</div></th>
+                <th><div align="center">ID Tourist</div></th>
+                <th><div align="center">First Name</div></th>
+                <th><div align="center">Last Name</div></th>
+                <th><div align="center">Location</div></th>
+                <th><div align="center">Reservation Date</div></th>
+                <th><div align="center">Payment Type</div></th>
             </tr>
             
             <%while ((rec != null) && (rec.next())) {%>
