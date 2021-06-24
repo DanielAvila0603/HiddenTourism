@@ -29,7 +29,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(ec.espe.edu.webservices.PlaceREST.class);
         resources.add(ec.espe.edu.webservices.RestaurantREST.class);
+        resources.add(ec.espe.edu.webservices.TourguideREST.class);
+        resources.add(ec.espe.edu.webservices.TouristREST.class);
     }
     
 }

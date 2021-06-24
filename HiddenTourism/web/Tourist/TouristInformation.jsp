@@ -23,9 +23,9 @@
             Statement sqlStatement = null;
 
             try {
-              Class.forName("com.mysql.jdbc.Driver");
+              Class.forName("org.mariadb.jdbc.Driver");
 
-                connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/hiddentourism" + "?user=root&password=mayonesa23");
+                connect = DriverManager.getConnection("jdbc:maria://localhost/hiddentourismdata" + "?user=root&password=12345");
 
                 sqlStatement = connect.createStatement();
                 String sql = "SELECT * FROM tourist";

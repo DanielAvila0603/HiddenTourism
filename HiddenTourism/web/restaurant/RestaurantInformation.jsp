@@ -23,7 +23,7 @@
         
         try{
             Class.forName("org.mariadb.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdb" + "?user=root&password=56793640");
+            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
             
             s = connect.createStatement();
             

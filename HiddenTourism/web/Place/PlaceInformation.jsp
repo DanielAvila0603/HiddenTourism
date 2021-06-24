@@ -27,8 +27,8 @@
             try{
                 Class.forName("org.mariadb.jdbc.Driver");
                     
-                connect=DriverManager.getConnection("jdbc:maria://localhost/places"+
-                        "?user=root&password=ndam");
+                connect=DriverManager.getConnection("jdbc:maria://localhost/hiddentourismdata"+
+                        "?user=root&password=12345");
 
                 preparedStatement = connect.prepareStatement("INSERT INTO places values(?,?,?,?,?,?,?)");
                 preparedStatement.setString(1, request.getParameter("NULL"));
