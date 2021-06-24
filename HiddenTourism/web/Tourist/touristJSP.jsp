@@ -34,15 +34,15 @@
                 
                 <tr>
                     <td>Reservation Date</td>
-                    <td><input type="date" name="reservationDate" min="2021-01-01" max="2021-12-31"/></td>
+                    <td><input type="date" name="reservationDate"/></td>
                 </tr>
                 
                 <tr>
                     <td>Payment type</td>
                     <td>
-                        <input type = "checkbox" name = "cash" check = "checked"/> Cash <br>
-                        <input type = "checkbox" name = "creditCard" check = "checked"/> Credit Card <br>
-                        <input type = "checkbox" name = "debitCard" check = "checked"/> Debit Card <br>
+                        <input type = "checkbox" name = "cash"/> Cash <br>
+                        <input type = "checkbox" name = "creditCard"/> Credit Card <br>
+                        <input type = "checkbox" name = "debitCard"/> Debit Card <br>
                     </td>
                 </tr>
             </table>
