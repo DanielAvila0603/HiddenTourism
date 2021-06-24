@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Nayeli
  */
-public class PlacesController {
+public class PlaceController {
     public Connection getDBConnection(){
         Connection conn = null;
         
@@ -31,7 +31,7 @@ public class PlacesController {
                         "?user=root&password=12345"
         );
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(PlacesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return conn;
@@ -41,7 +41,7 @@ public class PlacesController {
         Statement st = null;
         List<Place> placeList = new ArrayList<>();
         
-        PlacesController db = new PlacesController();
+        PlaceController db = new PlaceController();
         try{
             con = db.getDBConnection();
             st = con.createStatement();
@@ -54,7 +54,7 @@ public class PlacesController {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(PlacesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return placeList;
@@ -65,7 +65,7 @@ public class PlacesController {
         Statement st = null;
         int total=0;
         
-        PlacesController db = new PlacesController();
+        PlaceController db = new PlaceController();
         try{
             con = db.getDBConnection();
             st = con.createStatement();
