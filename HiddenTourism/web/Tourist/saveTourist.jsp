@@ -23,11 +23,14 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
         <title>TOURIST SAVING</title>
     </head>
     <body>
@@ -72,96 +75,9 @@
             tc.saveInDB(newT);
         %>
 
-        <h1>RoadMap Generation</h1>
-        <br><br>
-        <table style = "width: 50%">
-            <tr>
-                <td>User ID</td>
-                <%out.println("<td>" + newT.getIdTourist() + "</td>");%>
-            </tr>
-            <tr>
-                <td>First name</td>
-                <%out.println("<td>" + newT.getFirstName() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Last name</td>
-                <%out.println("<td>" + newT.getLastName() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Location</td>
-                <%out.println("<td>" + newT.getLocation() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Reservation date</td>
-                <%
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    out.println("<td>" + sdf.format(newT.getResevationDate()) + "</td>");
-                %>
-            </tr>
-            <tr>
-                <td>Payment type</td>
-                <%out.println("<td>" + newT.getPaymentType() + "</td>");%>
-            </tr>
-            <%
-                TourguideController tgc = new TourguideController();
-                List<Tourguide> list = tgc.readTourguide();
-
-                Random randomGenerator = new Random();
-                int indexT = randomGenerator.nextInt(list.size());
-                Tourguide rand = list.get(indexT);
-            %>
-            <tr>
-                <td>Guide's ID</td>
-                <%out.println("<td>" + rand.getIdTourguide() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Guide's First name</td>
-                <%out.println("<td>" + rand.getFirstName() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Guide's Last name</td>
-                <%out.println("<td>" + rand.getLastName() + "</td>");%>
-            </tr>
-            <%
-                RestaurantController rc = new RestaurantController();
-                ArrayList<Restaurant> arr = rc.readDBRestaurant();
-                Restaurant randR;
-                do {
-                    int indexR = randomGenerator.nextInt(arr.size());
-                    randR = arr.get(indexR);
-                } while (!randR.getRestaurantAddress().equalsIgnoreCase(newT.getLocation()));
-            %>
-            <tr>
-                <td>Restaurant's Name</td>
-                <%out.println("<td>" + randR.getRestaurantName() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Restaurant's description</td>
-                <%out.println("<td>" + randR.getRestaurantDescription() + "</td>");%>
-            </tr>
-            <tr>
-                <td>Restaurant's compsumption type</td>
-                <%out.println("<td>" + randR.getConsumptionType() + "</td>");%>
-            </tr>
-            <%
-                PlaceController pc = new PlaceController();
-                List<Place> plist = pc.readPlace();
-            %>
-            <tr>
-                <td>Places to visit</td>
-                <td>
-                    <ul>
-                        <%
-                            for (Place p : plist) {
-                                if (p.getProvince().equalsIgnoreCase(newT.getLocation())) {
-                                    out.println("<li>" + p.getCanton() + ": " + p.getTourismName() + "</li>");
-                                }
-                            }
-                        %>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-        <button onclick="location.href = '/index.html'">Return</button>
+        <div class="alert alert-success" role="alert">
+            <b>BIEN HECHO!</b> Los datos se guardaron exitosamente.
+        </div>
+        <button type="button" class="btn btn-primary" onclick="location.href = '/index.html'">Return</button>
     </body>
 </html>
