@@ -4,6 +4,9 @@
     Author     : Daniel Avila Los Angularios ESPE-DCCO
 --%>
 
+<%@page import="ec.espe.edu.controller.PlaceController"%>
+<%@page import="ec.edu.espe.places.model.Place"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +18,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="touristBody">
-        <div class="container">
+       <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="well well-sm">
@@ -47,7 +50,20 @@
                                 <div class="form-group">
                                     <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                                     <div class="col-md-8"><br>
-                                        <input id="email" name="location" type="text" placeholder="Location" class="form-control">
+
+
+                                        <select name="location" class="form-control">
+                                            <option value="Select" selected>Select</option>
+                                            <%
+                                                PlaceController pc = new PlaceController();
+                                                List<Place> list = pc.readPlace();
+                                      
+                                                for (Place place : list) {
+                                                    out.println("<option value=\"" + place.getProvince() + "\">" + place.getProvince() + "</option>");
+                                                }
+                                            %>
+                                        </select>
+
                                     </div>
                                 </div>
 

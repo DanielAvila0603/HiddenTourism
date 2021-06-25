@@ -19,7 +19,7 @@
         <title>TOURIST SAVING</title>
     </head>
     <body>
-        <%
+           <%
         Connection connect = null;
         Statement s = null;
         
@@ -86,5 +86,6 @@
         %>
         <h1>Ingresado con exito!</h1>
         <button onclick="location.href='/index.html'">Regresar</button>
+        <button onclick="location.href='/index.html'">Show Roadmap</button>
     </body>
 </html>

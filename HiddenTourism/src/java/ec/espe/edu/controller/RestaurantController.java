@@ -17,24 +17,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author WINDOWS-Sebastian
  */
 public class RestaurantController {
-    public void save(Restaurant restaurant){
-         System.out.println("saving from a class and output in the web server console -> " + restaurant.getRestaurantName());
-    }
-    
-    /*public Map<String, String> getHeadersInfo(HttpServletRequest request) {
-
-        Map<String, String> map = new HashMap<String, String>();
-
-        Enumeration headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            String key = (String) headerNames.nextElement();
-            String value = request.getHeader(key);
-            map.put(key, value);
-        }
-
-        return map;
-    }*/
-    
     public ArrayList<Restaurant> readDBRestaurant() throws ClassNotFoundException, SQLException{
         ArrayList<Restaurant> arr;
         Connection connect = null;
@@ -44,7 +26,7 @@ public class RestaurantController {
 
         Class.forName("org.mariadb.jdbc.Driver");
         connect = DriverManager.getConnection(
-                "jdbc:mariadb://localhost/hiddentourism" + 
+                "jdbc:mariadb://localhost/hiddentourismdata" + 
                         "?user=root&password=12345"
         );
 
