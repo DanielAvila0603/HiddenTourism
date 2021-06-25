@@ -56,11 +56,23 @@
                                         <select name="location" class="form-control">
                                             <option value="Select" selected>Select</option>
                                             <%
-                                                PlaceController pc = new PlaceController();
+                                               PlaceController pc = new PlaceController();
                                                 List<Place> list = pc.readPlace();
+                                                ArrayList<String> arr = new ArrayList();
+                                                arr.add("");
+                                                boolean b;
                                       
                                                 for (Place place : list) {
-                                                    out.println("<option value=\"" + place.getProvince() + "\">" + place.getProvince() + "</option>");
+                                                    b = true;
+                                                    for(String s : arr) {
+                                                        if(s.equalsIgnoreCase(place.getProvince())){
+                                                            b = false;
+                                                        }
+                                                    }
+                                                    if(b){
+                                                        arr.add(place.getProvince());
+                                                        out.println("<option value=\"" + place.getProvince() + "\">" + place.getProvince() + "</option>");
+                                                    }
                                                 }
                                             %>
                                         </select>
