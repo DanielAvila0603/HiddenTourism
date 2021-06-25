@@ -4,7 +4,7 @@
     Author     : Daniel Avila Los Angularios ESPE-DCCO
 --%>
 
-<%@page import="ec.edu.espe.places.model.Place"%>
+<%@page import="ec.espe.edu.model.Place"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="ec.espe.edu.controller.PlaceController"%>

@@ -5,7 +5,7 @@
  */
 package ec.espe.edu.webservices;
 
-import ec.edu.espe.places.model.Place;
+import ec.espe.edu.model.Place;
 import ec.espe.edu.controller.PlaceController;
 
 import java.util.List;

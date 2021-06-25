@@ -3,8 +3,7 @@
     Created on : 26/05/2021, 13:38:19
     Author     : Daniel
 --%>
-
-<%@page import="ec.edu.espe.places.model.Place"%>
+<%@page import="ec.espe.edu.model.Place"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="ec.espe.edu.controller.PlaceController"%>

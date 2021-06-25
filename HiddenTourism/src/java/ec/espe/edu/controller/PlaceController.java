@@ -6,7 +6,7 @@
 package ec.espe.edu.controller;
 
 
-import ec.edu.espe.places.model.Place;
+import ec.espe.edu.model.Place;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
