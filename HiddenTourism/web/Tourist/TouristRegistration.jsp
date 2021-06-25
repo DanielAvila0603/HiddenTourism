@@ -4,9 +4,10 @@
     Author     : Daniel Avila Los Angularios ESPE-DCCO
 --%>
 
-<%@page import="ec.espe.edu.controller.PlaceController"%>
 <%@page import="ec.edu.espe.places.model.Place"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="ec.espe.edu.controller.PlaceController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="touristBody">
-       <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="well well-sm">

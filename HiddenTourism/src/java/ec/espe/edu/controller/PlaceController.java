@@ -5,6 +5,7 @@
  */
 package ec.espe.edu.controller;
 
+
 import ec.edu.espe.places.model.Place;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,7 +28,7 @@ public class PlaceController {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         conn = DriverManager.getConnection(
-                "jdbc:mariadb://localhost/hiddentourism" + 
+                "jdbc:mariadb://localhost/hiddentourismdata" + 
                         "?user=root&password=12345"
         );
         } catch (ClassNotFoundException | SQLException ex) {
