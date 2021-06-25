@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
  * @author WINDOWS-Sebastian
  */
 public class RestaurantController {
+    
+    /*
+    redundant code, conection to database shows at every controller class
+    */
     public ArrayList<Restaurant> readDBRestaurant() throws ClassNotFoundException, SQLException{
         ArrayList<Restaurant> arr;
         Connection connect = null;
@@ -26,8 +30,8 @@ public class RestaurantController {
 
         Class.forName("org.mariadb.jdbc.Driver");
         connect = DriverManager.getConnection(
-                "jdbc:mariadb://localhost/hiddentourismdata" + 
-                        "?user=root&password=12345"
+                "jdbc:mariadb://localhost:3306/hiddentourismdata" + 
+                        "?user=root&password=12345678"
         );
 
         s = connect.createStatement();

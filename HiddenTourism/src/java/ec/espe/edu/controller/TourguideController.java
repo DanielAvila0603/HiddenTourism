@@ -24,12 +24,16 @@ public class TourguideController {
     
     public TourguideController(){
     }
+    
+     /*
+    redundant code, conection to database shows at every controller class
+    */
     public Connection getDBConnection(){
         Connection conn = null;
         Statement sqlStatement = null;
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
+                conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/hiddentourismdata" + "?user=root&password=12345678");
                 sqlStatement = conn.createStatement();
             } catch (Exception e) {
                 System.out.println(e.getMessage());

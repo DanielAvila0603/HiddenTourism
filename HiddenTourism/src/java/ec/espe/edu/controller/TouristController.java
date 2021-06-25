@@ -20,6 +20,9 @@ import java.util.ArrayList;
  */
 public class TouristController {
 
+     /*
+    redundant code, conection to database shows at every controller class
+    */
     public ArrayList<Tourist> readDBTourist() throws ClassNotFoundException, SQLException {
         ArrayList<Tourist> arr;
         Connection connect = null;
@@ -29,10 +32,9 @@ public class TouristController {
 
         Class.forName("org.mariadb.jdbc.Driver");
         connect = DriverManager.getConnection(
-                "jdbc:mariadb://localhost/hiddentourism"
-                + "?user=root&password=12345"
+                "jdbc:mariadb://localhost:3306/hiddentourism"
+                + "?user=root&password=12345678"
         );
-
         s = connect.createStatement();
         String SQLQuery = "SELECT * FROM tourist";
         ResultSet rs = s.executeQuery(SQLQuery);
@@ -57,7 +59,7 @@ public class TouristController {
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" 
+            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata"
                     + "?user=root&password=12345");
 
             s = connect.createStatement();

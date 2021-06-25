@@ -22,14 +22,18 @@ import java.util.logging.Logger;
  * @author Nayeli
  */
 public class PlaceController {
+    
+     /*
+    redundant code, conection to database shows at every controller class
+    */
     public Connection getDBConnection(){
         Connection conn = null;
         
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         conn = DriverManager.getConnection(
-                "jdbc:mariadb://localhost/hiddentourismdata" + 
-                        "?user=root&password=12345"
+                "jdbc:mariadb://localhost:3306/hiddentourismdata" + 
+                        "?user=root&password=12345678"
         );
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PlaceController.class.getName()).log(Level.SEVERE, null, ex);
