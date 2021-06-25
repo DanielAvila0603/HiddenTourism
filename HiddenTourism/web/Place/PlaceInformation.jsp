@@ -16,6 +16,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Place Information</title>
     </head>
     <body>
@@ -25,25 +28,29 @@
         
         try{
             Class.forName("org.mariadb.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
+            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" 
+                    + "?user=root&password=12345");
             
             s = connect.createStatement();
             
             String SQL = "SELECT * FROM places ORDER BY TourismName ASC";
             ResultSet rec = s.executeQuery(SQL);
         %>
-        <table width="600" border="1">
-            <tr>
-                <th><div align="center">Name of the Tourism</div></th>
-                <th><div align="center">Province</div></th>
-                <th><div align="center">Canton</div></th>
-                <th><div align="center">Address</div></th>
-                <th><div align="center">Contact</div></th> 
-                <th><div align="center">Activities</div></th>
-            </tr>
+        <h1>Place Information</h1>
+        <table class="table table-hover table-dark">
+            <thread>
+                <tr>
+                    <th scope="col"><div align="center">Name of the Tourism</div></th>
+                    <th scope="col"><div align="center">Province</div></th>
+                    <th scope="col"><div align="center">Canton</div></th>
+                    <th scope="col"><div align="center">Address</div></th>
+                    <th scope="col"><div align="center">Contact</div></th> 
+                    <th scope="col"><div align="center">Activities</div></th>
+                </tr>
+            </thread>
             <%while ((rec != null) && (rec.next())) {%>
             <tr>
-                <td><div align="center"><%=rec.getString("TourismName")%></div></td>
+                <td scope="row"><div align="center"><%=rec.getString("TourismName")%></div></td>
                 <td><div align="center"><%=rec.getString("Province")%></div></td>
                 <td><div align="center"><%=rec.getString("Canton")%></div></td>
                 <td><div align="center"><%=rec.getString("Address")%></div></td>

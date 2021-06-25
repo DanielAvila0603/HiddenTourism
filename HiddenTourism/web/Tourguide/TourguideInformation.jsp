@@ -16,6 +16,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" type="image/x-icon" href="/img/logoICO.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Tourguides Information</title>
     </head>
     <body>
@@ -24,20 +27,24 @@
             Statement sqlStatement = null;
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" + "?user=root&password=12345");
+                connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata" 
+                        + "?user=root&password=12345");
                 sqlStatement = connect.createStatement();
                 String sql = "SELECT * FROM tourguide";
                 ResultSet rec = sqlStatement.executeQuery(sql);
         %>
-        <table width="600" border="1">
-            <tr>
-                <th><div align="center">CI</div></th>
-                <th><div align="center">First Name</div></th>
-                <th><div align="center">Last Name</div></th>
-            </tr>
+        <h1>Tourguide Information</h1>
+        <table class="table table-hover table-dark">
+            <thread>
+                <tr>
+                    <th scope="col"><div align="center">CI</div></th>
+                    <th scope="col"><div align="center">First Name</div></th>
+                    <th scope="col"><div align="center">Last Name</div></th>
+                </tr>
+            </thread>
             <%while ((rec != null) && (rec.next())) {%>
             <tr>
-                <td><div align="center"><%=rec.getString("idTourguide")%></div></td>
+                <td scope="row"><div align="center"><%=rec.getString("idTourguide")%></div></td>
                 <td><div align="center"><%=rec.getString("firstName")%></div></td>
                 <td><div align="center"><%=rec.getString("lastName")%></div></td>
           
