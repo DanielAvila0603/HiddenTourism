@@ -5,6 +5,7 @@
  */
 package ec.espe.edu.controller;
 
+import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Tourguide;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,45 +26,19 @@ public class TourguideController {
     public TourguideController(){
     }
     
-     /*
-    redundant code, conection to database shows at every controller class
-    */
-    public Connection getDBConnection(){
-        Connection conn = null;
-        Statement sqlStatement = null;
-            try {
-                Class.forName("org.mariadb.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/hiddentourismdata" + "?user=root&password=12345678");
-                sqlStatement = conn.createStatement();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.out.println("Stack in the catch -> " + e.toString());
-                e.printStackTrace();
-            }
-            try {
-                if (sqlStatement != null) {
-                    sqlStatement.close();
-                }
-            } 
-            catch (SQLException e) {
-                
-                e.printStackTrace();
-            }
-           
-        return conn;
-    }
     
-    public  List<Tourguide> readTourguide(){
+    
+    public List<Tourguide> readTourguide() {
         Connection conn = null;
         Statement statement = null;
         List<Tourguide> tourguideList = new ArrayList<>();
         
-        TourguideController dbConnection = new TourguideController();
+        ConexionDB dbConnection = new ConexionDB();
         try{
             conn = dbConnection.getDBConnection();
             statement = conn.createStatement();
             
-            String sql = "SELECT * FROM tourguide";
+            String sql = "select * from tourguide";
             ResultSet res = statement.executeQuery(sql);
             
             while((res != null) && (res.next())){
@@ -71,7 +46,7 @@ public class TourguideController {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(TourguideController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return tourguideList;

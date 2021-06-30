@@ -1,5 +1,6 @@
 package ec.espe.edu.controller;
 
+import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Restaurant;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -17,38 +20,35 @@ import javax.servlet.http.HttpServletRequest;
  * @author WINDOWS-Sebastian
  */
 public class RestaurantController {
+   
     
-    /*
-    redundant code, conection to database shows at every controller class
-    */
-    public ArrayList<Restaurant> readDBRestaurant() throws ClassNotFoundException, SQLException{
-        ArrayList<Restaurant> arr;
-        Connection connect = null;
-        Statement s = null;
-
-        arr = new ArrayList();
-
-        Class.forName("org.mariadb.jdbc.Driver");
-        connect = DriverManager.getConnection(
-                "jdbc:mariadb://localhost:3306/hiddentourismdata" + 
-                        "?user=root&password=12345678"
-        );
-
-        s = connect.createStatement();
-        String SQLQuery = "SELECT * FROM restaurant";
-        ResultSet rs = s.executeQuery(SQLQuery);
-
-        while(rs.next()){
-            arr.add(new Restaurant(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
-                    rs.getString(7)));
+    public ArrayList<Restaurant> readDBRestaurant() {
+        Connection conn = null;
+        Statement statement = null;
+        ArrayList<Restaurant> arr = new ArrayList<>();
+        
+        ConexionDB dbConnection = new ConexionDB();
+        try{
+            conn = dbConnection.getDBConnection();
+            statement = conn.createStatement();
+            
+            String sql = "select * from restaurant";
+            ResultSet res = statement.executeQuery(sql);
+            
+            while((res != null) && (res.next())){
+                arr.add(new Restaurant(res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6),
+                    res.getString(7)));
+            }
+            
+        }catch(SQLException ex){
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return arr;
     }
 }
