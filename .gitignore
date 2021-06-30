@@ -1,2 +1,2 @@
 config.json
-\src\java\ec\espe\edu\conexionDB\ConexionDB.java
+/src/java/ec/espe/edu/conexionDB/ConexionDB.java
