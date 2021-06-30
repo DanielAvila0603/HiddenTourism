@@ -5,6 +5,7 @@
  */
 package ec.espe.edu.controller;
 
+import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Tourist;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,26 +23,21 @@ import java.util.ArrayList;
  */
 public class TouristController {
 
-     /*
-    redundant code, conection to database shows at every controller class
-    */
-    public ArrayList<Tourist> readDBTourist() throws ClassNotFoundException, SQLException {
-        ArrayList<Tourist> arr;
-        Connection connect = null;
-        Statement s = null;
-
-        arr = new ArrayList();
-
-        Class.forName("org.mariadb.jdbc.Driver");
-        connect = DriverManager.getConnection(
-                "jdbc:mariadb://localhost:3306/hiddentourism"
-                + "?user=root&password=12345678"
-        );
-        s = connect.createStatement();
-        String SQLQuery = "SELECT * FROM tourist";
-        ResultSet rs = s.executeQuery(SQLQuery);
-
-        while (rs.next()) {
+    
+    public ArrayList<Tourist> readDBRestaurant() {
+        Connection conn = null;
+        Statement statement = null;
+        ArrayList<Tourist> arr = new ArrayList<>();
+        
+        ConexionDB dbConnection = new ConexionDB();
+        try{
+            conn = dbConnection.getDBConnection();
+            statement = conn.createStatement();
+            
+            String sql = "select * from tourist";
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while (rs.next()) {
             arr.add(new Tourist(
                     rs.getString(1),
                     rs.getString(2),
@@ -49,19 +47,22 @@ public class TouristController {
                     rs.getString(6)
             ));
         }
-
+            
+        }catch(SQLException ex){
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return arr;
     }
-
+    
     public void saveInDB(Tourist t) {
         Connection connect = null;
         Statement s = null;
+        ConexionDB dbConnection = new ConexionDB();
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mariadb://localhost/hiddentourismdata"
-                    + "?user=root&password=12345");
-
+            
+            connect = dbConnection.getDBConnection();
             s = connect.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

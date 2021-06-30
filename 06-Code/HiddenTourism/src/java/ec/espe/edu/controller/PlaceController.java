@@ -6,6 +6,7 @@
 package ec.espe.edu.controller;
 
 
+import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Place;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,33 +23,21 @@ import java.util.logging.Logger;
  * @author Nayeli
  */
 public class PlaceController {
-    
-     /*
-    redundant code, conection to database shows at every controller class
-    */
-    public Connection getDBConnection(){
-        Connection conn = null;
-        
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-        conn = DriverManager.getConnection(
-                "jdbc:mariadb://localhost:3306/hiddentourismdata" + 
-                        "?user=root&password=12345678"
-        );
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(PlaceController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return conn;
+
+    public PlaceController() {
     }
+    
+    
+    
     public List<Place> readPlace(){
         Connection con = null;
         Statement st = null;
         List<Place> placeList = new ArrayList<>();
+        ConexionDB dbConnection = new ConexionDB();
         
         PlaceController db = new PlaceController();
         try{
-            con = db.getDBConnection();
+            con = dbConnection.getDBConnection();
             st = con.createStatement();
             
             String sql = "SELECT * FROM places";
@@ -69,10 +58,10 @@ public class PlaceController {
         Connection con = null;
         Statement st = null;
         int total=0;
-        
-        PlaceController db = new PlaceController();
+        ConexionDB dbConnection = new ConexionDB();
+   
         try{
-            con = db.getDBConnection();
+            con = dbConnection.getDBConnection();
             st = con.createStatement();
             
             String sql = "SELECT * FROM places";
