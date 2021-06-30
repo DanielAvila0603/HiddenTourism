@@ -19,6 +19,7 @@ _Project carried out for the subject of Advanced Web Programming in the Software
 ## External ibraries
 
 * [MariaDB driver](https://mariadb.com/kb/en/about-mariadb-connector-j/) - _Driver to connect Netbeans to Heidi SQL._
+* [Json driver](https://jar-download.com/artifacts/com.googlecode.json-simple/json-simple/1.1.1/source-code) - _Driver to use Json objects._
 
 
 ---
