@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class ConexionDB {
     public Connection getDBConnection(){
         Connection conn = null;
-        String path = "C:\\Users\\SEBASTIAN\\Desktop\\config.json";
+        String path = "C:\\Users\\USER1\\Documents\\GitHub\\config\\config.json";
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mariadb://" + ConfigDB.readConfig(path, "Host") + ":" 
