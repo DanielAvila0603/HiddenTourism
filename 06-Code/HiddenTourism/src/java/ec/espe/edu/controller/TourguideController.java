@@ -8,7 +8,6 @@ package ec.espe.edu.controller;
 import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Tourguide;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

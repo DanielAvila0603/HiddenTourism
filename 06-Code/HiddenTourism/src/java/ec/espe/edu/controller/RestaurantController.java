@@ -3,17 +3,12 @@ package ec.espe.edu.controller;
 import ec.espe.edu.conexionDB.ConexionDB;
 import ec.espe.edu.model.Restaurant;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
